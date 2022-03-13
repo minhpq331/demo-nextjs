@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { API_BASE_URL } from '../config/environment';
+import { Post } from '../models/Post';
 import { SingleResponse } from '../models/Response';
 import { User } from '../models/User';
 
@@ -19,6 +20,15 @@ export class ApiService {
                     version: 'test',
                 },
             }
+        );
+        return response.data.data;
+        // you can access response.data.status, .message, .data
+    }
+
+    static async getPostById(id: string): Promise<Post> {
+        // GET /posts/:id
+        const response = await axios.get<SingleResponse<Post>>(
+            `${API_BASE_URL}/api/posts/${id}`
         );
         return response.data.data;
         // you can access response.data.status, .message, .data

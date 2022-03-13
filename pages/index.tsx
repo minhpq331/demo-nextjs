@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { ApiService } from '../services/api.service';
@@ -61,6 +62,12 @@ const Home: NextPage = () => {
                         Submit
                     </Button>
                 </Form>
+                <Link href="/post?id=1">
+                    <a>Post with valid ID</a>
+                </Link>
+                <Link href="/post?id=2">
+                    <a>Post with invalid ID</a>
+                </Link>
             </main>
 
             <footer className={styles.footer}>
